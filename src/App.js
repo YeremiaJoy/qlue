@@ -29,12 +29,13 @@ function App() {
   }, []);
 
   return (
-    <div className="item">
+    <div className="item-container">
       {data.map((val) => {
         return (
-          <div key={val.id}>
-            <div>{val.full_name}</div>
-            <div>
+          <div key={val.id} className="item">
+            <h2 className="fullname">{val.full_name}</h2>
+            <div className="expertskill">Expert skills:</div>
+            <div className="skill">
               {val.expert_skills.length > 0
                 ? val.expert_skills.join(", ")
                 : "-"}
