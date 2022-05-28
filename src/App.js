@@ -7,7 +7,7 @@ function App() {
 
   function getData() {
     let arr = [];
-    initData.data.forEach((val) => {      
+    initData.data.forEach((val) => {
       let obj = {};
       //declare key of new object
       obj["id"] = val.id;
@@ -16,7 +16,8 @@ function App() {
       //split skill to [key,value]
       const skill = Object.entries(val.skills);
       skill.forEach(([key, val]) => {
-        if (val === "expert") obj["expert_skills"].push(key);
+        //change key word to uppercase at first letter 
+        if (val === "expert") obj["expert_skills"].push(key.charAt(0).toUpperCase() + key.slice(1));        
       });
       arr.push(obj);
     });
@@ -28,8 +29,19 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {console.log(data)}
+    <div className="item">
+      {data.map((val) => {
+        return (
+          <div key={val.id}>
+            <div>{val.full_name}</div>
+            <div>
+              {val.expert_skills.length > 0
+                ? val.expert_skills.join(", ")
+                : "-"}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
