@@ -1,0 +1,60 @@
+.detail-container {
+  background-color: rgb(223, 168, 86);
+  max-width: 480px;
+  border-radius: 10px;
+  margin: 8px auto;
+  padding: 26px 12px;
+  min-height: calc(100vh - 16px);
+}
+
+.detail-container img {
+  border-radius: 50%;
+}
+
+.picture-container {
+  position: relative;  
+  max-width: 200px;
+  margin: auto;
+}
+
+.picture-container .symbol-picture {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(255, 211, 146);
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+}
+
+.detail-fullname {
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+.detail-expert {
+  text-align: center;
+  font-weight: 600;
+}
+
+.detail-skill-container {
+  display: grid;
+  gap: 5px;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.detail-desc {
+  text-align: justify;
+}
+
+@media screen and (max-width: 480px) {
+  .detail-container {
+    margin: 8px;
+  }
+}

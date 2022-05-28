@@ -3,17 +3,23 @@
 }
 
 body,
-html {
+html,
+a{
   margin: 0;
-  padding: 4px;
+  padding: 0;
   font-family: "Poppins", sans-serif;
   color: #fff;
+  text-decoration: none;
 }
-
+ul,li{
+  margin: 0;
+  padding: 0;
+}
 .item-container {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(2, 1fr);
+  margin: 8px;
 }
 
 .item {
@@ -22,6 +28,7 @@ html {
   text-align: center;
   height: 150px;
   padding: 16px;
+  cursor: pointer;
 }
 
 .fullname {
@@ -35,7 +42,6 @@ html {
 .expertskill {
   height: 26px;
 }
-
 
 @media screen and (max-width: 480px) {
   .item-container {
