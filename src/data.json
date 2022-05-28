@@ -2,7 +2,7 @@
   "message": "Success to get data",
   "data": [
     {
-      "id": "1",
+      "id": 1,
       "first_name": "John",
       "last_name": "Doe",
       "skills": {
@@ -13,7 +13,7 @@
       }
     },
     {
-      "id": "2",
+      "id": 2,
       "first_name": "Will",
       "last_name": "Smith",
       "skills": {
@@ -24,7 +24,7 @@
       }
     },
     {
-      "id": "3",
+      "id": 3,
       "first_name": "Jaden",
       "last_name": "Smith",
       "skills": {
@@ -35,7 +35,7 @@
       }
     },
     {
-      "id": "4",
+      "id": 4,
       "first_name": "El",
       "last_name": "Professor",
       "skills": {

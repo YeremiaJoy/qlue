@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../style/detail.css";
 import pp from "../assets/user.png";
+import { dataMaster } from "../context";
 
 function Detail() {
   const [detail, setDetail] = useState({});
   const { name } = useParams();
 
+  const { data } = useContext(dataMaster);
+
   useEffect(() => {
-    setDetail(
-      JSON.parse(localStorage.getItem("data")).find(
-        (val) => val.full_name === name
-      )
-    );
-  }, [name]);
+    //set detail info from data useContext(dataMaster)
+    setDetail(data.find((val) => val.full_name === name));
+  }, [name, data]);
 
   return (
     <div className="detail-container">
@@ -22,9 +22,11 @@ function Detail() {
         <img src={pp} alt="user-pp" width="100%" height="100%" />
       </div>
       <h2 className="detail-fullname">{detail.full_name?.toUpperCase()}</h2>
+      {/* show div if any this person have skill */}
       {detail.expert_skills?.length > 0 && (
         <div className="detail-expert">Expert Skills</div>
       )}
+      {/* show div if any this person have skill */}
       {detail.expert_skills?.length > 0 && (
         <div className="detail-skill-container">
           {detail.expert_skills.map((val, k) => {

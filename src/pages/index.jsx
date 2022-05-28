@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/index.css";
 import initData from "../data.json";
+import { dataMaster } from "../context";
 
 function Home() {
-  const [data, setData] = useState([]);
+  const { data, setData } = useContext(dataMaster);
 
   function getData() {
     let arr = [];
@@ -24,28 +25,39 @@ function Home() {
       arr.push(obj);
     });
     setData(arr);
-    localStorage.setItem("data", JSON.stringify(arr));
   }
 
   useEffect(() => {
-    getData();
+    if (data.length === 0) {
+      getData();
+    }
   }, []);
 
   return (
-    <div className="item-container">
-      {data.map((val) => {
-        return (
-          <Link to={`/profile/${val.full_name}`} key={val.id} className="item">
-            <h2 className="fullname">{val.full_name}</h2>
-            <div className="expertskill">Expert skills:</div>
-            <div className="skill">
-              {val.expert_skills.length > 0
-                ? val.expert_skills.join(", ")
-                : "-"}
-            </div>
-          </Link>
-        );
-      })}
+    <div className="page">
+      <div className="item-container">
+        {data.map((val) => {
+          return (
+            <Link
+              to={`/profile/${val.full_name}`}
+              key={val.id}
+              className="item"
+            >
+              <h2 className="fullname">{val.full_name}</h2>
+              <div className="expertskill">Expert skills:</div>
+              <div className="skill">
+                {/* join array of expert skill and give commas between each words */}
+                {val.expert_skills.length > 0
+                  ? val.expert_skills.join(", ")
+                  : "-"}
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+      <Link to="/create" className="add-btn-container">
+        <div className="add-btn">+</div>
+      </Link>
     </div>
   );
 }
